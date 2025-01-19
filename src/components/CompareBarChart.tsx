@@ -11,14 +11,17 @@ import {
   LineElement,
   CategoryScale,
   LinearScale,
+  PointElement, // Ajout du PointElement pour résoudre l'erreur
 } from "chart.js";
 
+// Enregistrement des éléments nécessaires
 ChartJS.register(
   Title,
   Tooltip,
   Legend,
   BarElement,
   LineElement,
+  PointElement, // Enregistrement du PointElement
   CategoryScale,
   LinearScale
 );

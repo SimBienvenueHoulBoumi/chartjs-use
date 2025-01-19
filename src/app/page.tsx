@@ -2,7 +2,7 @@
 
 import dynamic from "next/dynamic";
 
-// Charger les composants dynamiquement
+// Chargement des composants graphiques dynamiques
 const BarChart = dynamic(() => import("../components/BarChart"), {
   ssr: false,
 });
@@ -23,7 +23,7 @@ const Home = () => {
   const data = [
     [12, 19, 5, 8, 3, 7, 18, 12, 9, 15, 7, 13], // Données pour "Groupe A"
     [18, 12, 9, 18, 12, 4, 15, 7, 13, 3, 11, 7], // Données pour "Groupe B"
-    [5, 8, 3, 18, 12, 9, 15, 7, 13, 7, 5, 44], // Données pour "Groupe C"
+    [5, 8, 3, 18, 12, 9, 15, 7, 13, 7, 5, 44],  // Données pour "Groupe C"
   ];
 
   const labels = [
@@ -47,41 +47,42 @@ const Home = () => {
 
   return (
     <div className="container mx-auto p-4">
-      <h1 className="text-center text-3xl mb-6">
+      <h1 className="text-center text-3xl font-semibold mb-6">
         Exemple d&apos;intégration de Chart.js
       </h1>
 
-      <div className="flex flex-wrap justify-center gap-2">
-        {/* Premier graphique avec un seul groupe de données */}
-        <div className="w-full sm:w-1/2 md:w-4/3 flex justify-center">
+      {/* Conteneur principal avec flex et espace entre chaque graphique */}
+      <div className="flex flex-wrap justify-center gap-6">
+        {/* Graphique en barres - Groupe A */}
+        <div className="w-full sm:w-1/2 md:w-1/3 flex justify-center">
           <BarChart
-            data={data[0]} // Passer les données pour le groupe A
-            labels={labels} // Passer les étiquettes pour chaque mois
+            data={data[0]} // Données pour le groupe A
+            labels={labels} // Étiquettes mensuelles
             legendPosition={legendPosition} // Position de la légende
             title="Graphique des ventes mensuelles - Groupe A"
           />
         </div>
 
-        {/* Deuxième graphique (CompareBarChart) avec les données des groupes comparés */}
+        {/* Graphique comparatif avec plusieurs groupes */}
         <div className="w-full sm:w-1/2 md:w-1/3 flex justify-center">
           <CompareBarChart
-            data={data} // Passer les données des groupes
-            labels={labels} // Passer les étiquettes pour chaque mois
+            data={data} // Données des groupes
+            labels={labels} // Étiquettes mensuelles
             legendPosition={legendPosition} // Position de la légende
-            title={title} // Titre du graphique
+            title={title} // Titre principal
           />
         </div>
 
-        {/* Section pour StepperChart */}
+        {/* Graphique à étapes */}
         <div className="w-full sm:w-1/2 md:w-1/3 flex justify-center">
           <StepperChart data={data} labels={labels} />
         </div>
 
-        {/* Nouveau graphique à aire polaire */}
+        {/* Graphique à aire polaire */}
         <div className="w-full sm:w-1/2 md:w-1/3 flex justify-center">
           <PolarAreaChart
-            data={[12, 19, 5, 8, 3]} // Exemple de données pour le graphique à aire polaire
-            labels={["Janvier", "Février", "Mars", "Avril", "Mai"]} // Étiquettes pour l'aire polaire
+            data={[12, 19, 5, 8, 3]} // Exemple de données
+            labels={["Janvier", "Février", "Mars", "Avril", "Mai"]} // Étiquettes des mois
             legendPosition={legendPosition} // Position de la légende
             title="Répartition des ventes mensuelles"
           />
