@@ -1,9 +1,24 @@
 import { PolarArea } from "react-chartjs-2";
 import PropTypes from "prop-types";
-import { Chart as ChartJS, Title, Tooltip, Legend, ArcElement, CategoryScale, RadialLinearScale } from "chart.js";
+import {
+  Chart as ChartJS,
+  Title,
+  Tooltip,
+  Legend,
+  ArcElement,
+  CategoryScale,
+  RadialLinearScale,
+} from "chart.js";
 
 // Enregistrer les modules nécessaires pour Chart.js
-ChartJS.register(Title, Tooltip, Legend, ArcElement, CategoryScale, RadialLinearScale);
+ChartJS.register(
+  Title,
+  Tooltip,
+  Legend,
+  ArcElement,
+  CategoryScale,
+  RadialLinearScale
+);
 
 /**
  * Composant graphique à aire polaire représentant des données.
